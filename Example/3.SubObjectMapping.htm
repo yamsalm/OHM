@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script src="js/jquery.OHM.js" type="text/javascript"></script>
+    <script src="js/json2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var data = { Msg: "Data object With SubObject", User: { FirstName: "jo", LastName: "Doo" }, Pet: { Name: "Ducky", IsDog: true} };
+        $(function () {
+
+
+            $(".pnlForm").ObjectToHtml(data);
+
+            $("#btnBackToObj").click(function () {
+                //With OHM
+                var newData = $(".pnlForm").HtmlToObject(data);
+
+                alert(JSON.stringify(newData));
+                //use firebug for better web :-) 
+                // console.log(newData);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="pnlForm">
+        <h3 class="Msg">
+        </h3>
+        <br />
+        <h3>
+            User</h3>
+        First Name :
+        <input type="text" class="User_FirstName" value="" />
+        <br />
+        Last Name :
+        <input type="text" class="User_LastName" value="" />
+        <br />
+        <h3>
+            Pet</h3>
+         Name :
+        <input type="text" class="Pet_Name" value="" />
+        <input type="checkbox" class="Pet_IsDog" />
+        <input type="button" id="btnBackToObj" value="BacktToObject" />
+    </div>
+</body>
+</html>
